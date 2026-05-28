@@ -250,12 +250,13 @@ var currentQ = 0, score = 0, answered = false;
 /* ── Booking Holdings price data (monthly, split-adjusted approx) ── */
 var bookingData = [
   {d:'Jan 19',p:76},{d:'Apr 19',p:80},{d:'Jul 19',p:82},{d:'Oct 19',p:81},{d:'Jan 20',p:83},
-  {d:'Feb 20',p:78},{d:'Mar 20',p:46},{d:'Jun 20',p:68},{d:'Sep 20',p:72},{d:'Dec 20',p:90},
+  {d:'Feb 20',p:78},{d:'Mar 20',p:52},{d:'Jun 20',p:68},{d:'Sep 20',p:72},{d:'Dec 20',p:90},
   {d:'Mar 21',p:98},{d:'Jun 21',p:96},{d:'Sep 21',p:100},{d:'Dec 21',p:96},
   {d:'Mar 22',p:94},{d:'Jun 22',p:80},{d:'Sep 22',p:76},{d:'Dec 22',p:82},
   {d:'Mar 23',p:112},{d:'Jun 23',p:116},{d:'Sep 23',p:128},{d:'Dec 23',p:150},
   {d:'Mar 24',p:154},{d:'Jun 24',p:162},{d:'Sep 24',p:170},{d:'Dec 24',p:202},
-  {d:'Mar 25',p:210},{d:'May 25',p:234}
+  {d:'Mar 25',p:210},{d:'Jun 25',p:234},{d:'Sep 25',p:220},{d:'Dec 25',p:210},
+  {d:'Jan 26',p:195},{d:'Apr 26',p:182}
 ];
 
 function renderChart() {
@@ -310,8 +311,8 @@ function renderChart() {
     ctx.fillText(label, px, above ? py-16 : py+26);
   }
   anno(4,'$83 peak','rgba(255,255,255,0.6)',true);
-  anno(6,'$46 low','#D83949',false);
-  anno(n-1,'$234','#00c9a3',true);
+  anno(6,'$52 low','#D83949',false);
+  anno(n-1,'$182','#00c9a3',true);
 
   // COVID zone
   ctx.fillStyle='rgba(216,57,73,0.08)';
@@ -335,7 +336,7 @@ function renderQ1() {
 
 function renderQ2() {
   return '<div class="q-category"><span class="icon">\u{1F6E1}\uFE0F</span> What is a quality portfolio?</div>'+
-    '<div class="q-text">We invest in businesses that are genuinely hard to compete with \u2014 built to keep compounding earnings whether the economy is booming or in freefall. Using the COVID-19 market event, how do you think the portfolio held up?</div>'+
+    '<div class="q-text">We invest in businesses that have enduring competitive advantages that enable them to continue compounding earnings regardless of whether the economy is booming or in freefall. Using the COVID-19 market event as an example, how do you think the Ninety One Quality portfolio held up?</div>'+
     '<div class="stat-cards">'+
       '<div class="stat-card red"><div class="sc-val">\u221234%</div><div class="sc-label">MSCI ACWI drawdown<br>during COVID-19</div></div>'+
       '<div class="stat-card teal"><div class="sc-val">329 days</div><div class="sc-label">Time for the index<br>to fully recover</div></div>'+
@@ -352,13 +353,13 @@ function renderQ2() {
 
 function renderQ3() {
   return '<div class="q-category"><span class="icon">\u{1F4C8}</span> Booking Holdings case study</div>'+
-    '<div class="q-text">Markets are stressed and Booking Holdings\u2019 share price has fallen ~45% \u2014 as it did during COVID-19. The business model is intact, the competitive moat is unchanged, but the macro environment is painful. As a quality investor, what\u2019s the right call?</div>'+
+    '<div class="q-text">Markets are stressed and Booking Holdings\u2019 share price falls ~45%, as it did during COVID-19. The business model is intact, the competitive moat is unchanged, but the macro environment is painful. As a quality investor, what\u2019s the right call?</div>'+
     '<div class="chart-container"><div class="chart-title">Booking Holdings \u2014 Share price (split-adjusted)</div>'+
     '<div id="chartArea"><canvas id="bookingChart" style="width:100%;height:260px;"></canvas></div>'+
     '<div class="chart-annotations">'+
       '<div class="chart-anno"><div class="ca-dot" style="background:rgba(255,255,255,0.5)"></div>Pre-COVID peak $83</div>'+
-      '<div class="chart-anno"><div class="ca-dot" style="background:#D83949"></div>COVID low $46 (\u221245%)</div>'+
-      '<div class="chart-anno"><div class="ca-dot" style="background:#00c9a3"></div>Current $234 (+409% from low)</div>'+
+      '<div class="chart-anno"><div class="ca-dot" style="background:#D83949"></div>COVID low $52 (\u221245%)</div>'+
+      '<div class="chart-anno"><div class="ca-dot" style="background:#00c9a3"></div>Apr 2026 $182 (+250% from low)</div>'+
     '</div></div>'+
     '<div class="options-grid">'+
     '<button class="option-btn" onclick="selectOption(0)"><span class="opt-letter">A</span><span>Sell \u2014 travel stocks are too risky, the sector damage is permanent</span></button>'+
@@ -450,8 +451,8 @@ var feedbacks = [
     no: 'SJP\u2019s first belief is that achieving the right client outcomes is the starting point for every decision. Rather than asking \u2018what can the market offer?\u2019, the team asks \u2018what does the client need?\u2019 first.' },
   { ok: 'The strategy fell significantly less than the market during COVID, and recovered in just 55 days versus 329 days for the MSCI ACWI. With a downside capture ratio of ~72%, it absorbs only about 72 cents of every dollar the market loses. Smaller drawdowns, quicker recovery \u2014 that\u2019s resilient compounding in action.',
     no: 'The strategy fell meaningfully less than the MSCI ACWI during COVID, and recovered in just 55 days compared to 329 days for the index. A downside capture of ~72% means less damage on the way down, and a stronger base to compound from on the way back up.' },
-  { ok: 'Booking\u2019s competitive moat \u2014 dominant market position, network effects, asset-light model \u2014 never changed during COVID. Only the share price did. Selling at ~$46 and missing the recovery to $234 would have meant forgoing +409% in returns. The Global Quality team added to the position rather than exiting.',
-    no: 'COVID was an exogenous shock to travel volumes, not to Booking\u2019s structural competitive advantages. The moat survived intact, the business bounced back, and patient investors were rewarded. If the thesis isn\u2019t broken, the price fall is the opportunity.' }
+  { ok: 'Booking\u2019s competitive moat \u2014 dominant market position, network effects, asset-light model \u2014 never changed during COVID. Only the share price did. Selling at ~$52 and missing the recovery to $182 by April 2026 would have meant forgoing +250% in returns. As Robin Ellis noted after Q1 2025\u2019s volatility: \u201CFear and panic are drivers of successful headlines. Patience and calm are drivers of successful investment returns.\u201D The Quality team stayed patient, adding to the position rather than exiting.',
+    no: 'COVID was an exogenous shock to travel volumes, not to Booking\u2019s structural competitive advantages. The moat survived intact, free cash flow recovered, and by 2025 the business was generating $9.1bn in annual free cash flow \u2014 stronger than before the pandemic. The investment thesis was not broken.' }
 ];
 
 function renderQuestion() {
@@ -512,10 +513,16 @@ function showResults() {
   var descs = {4:"You think exactly like a Quality investor. Every answer showed deep understanding of our approach.",3:"Impressive \u2014 you\u2019ve clearly got a strong grasp of what separates enduring businesses.",2:"You\u2019re on the right track. A conversation with our Quality team could sharpen those instincts further.",1:"Everyone starts somewhere \u2014 and curiosity is the first step. Come chat with us.",0:"A fresh set of eyes can be valuable! Let\u2019s talk about how Quality differs from conventional thinking."};
   document.getElementById('resultTitle').textContent=titles[score];
   document.getElementById('resultDesc').textContent=descs[score];
-  document.getElementById('emailCapture').innerHTML = renderEmailForm();
-  document.getElementById('emailCapture').style.display='block';
-  document.getElementById('resultActions').style.display='none';
-  if(score>=3) launchConfetti();
+  if(score === TOTAL_Q) {
+    document.getElementById('emailCapture').innerHTML = renderEmailForm();
+    document.getElementById('emailCapture').style.display='block';
+    document.getElementById('resultActions').style.display='none';
+    launchConfetti();
+  } else {
+    document.getElementById('emailCapture').innerHTML = '<div style="text-align:center;padding:24px 20px;"><p style="font-size:15px;color:var(--gg);line-height:1.6;margin-bottom:6px;">Score 4 out of 4 to enter the draw for our Quality basket.</p><p style="font-size:13px;color:rgba(255,255,255,0.3);">Feel free to try again!</p></div>';
+    document.getElementById('emailCapture').style.display='block';
+    document.getElementById('resultActions').style.display='flex';
+  }
 }
 
 /* ── Entry management ── */
